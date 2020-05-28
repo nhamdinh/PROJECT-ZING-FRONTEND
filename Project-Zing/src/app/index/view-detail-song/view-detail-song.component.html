@@ -1,0 +1,45 @@
+<form *ngIf="songDetail">
+  
+
+    <div class="container">
+        <h5 class="align-content-center"><span>DETAIL SONG</span></h5>
+        <div class="row">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <!--                <div class="card-header">-->
+                <!--                    <h3 class="card-title"> Book list</h3>-->
+                <!--                </div>-->
+                <!--                <div class="card-body">-->
+                <!--                    <div>-->
+                <img src="{{srcImageSong+songDetail.imageSong}}" alt="image" width="500">
+                <br>
+                <audio src="{{srcAudioSong+songDetail.linkSong}}" controls style="width: 100%"></audio>
+
+
+                <!--                    </div>-->
+
+                <!--                </div>-->
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <!--                <div class="card-header">-->
+                <!--                    <h3 class="card-title"> Book list</h3>-->
+                <!--                </div>-->
+                <!--                <div class="card-body">-->
+                                    <div>
+                <h3>Tên bài hát: {{songDetail.nameSong}} </h3>
+                <h3>Tác giả: {{songDetail.author}} </h3>
+                <h3>Thể loại: {{songDetail.category}} </h3>
+                <h3>Lượt tải về: {{songDetail.downloadSong}} </h3>
+                <h3>Lượt like: {{songDetail.likeSong}} </h3>
+                <h3>Ca sĩ: {{songDetail.singer.nameSinger}} </h3>
+                                    </div>
+
+                <!--                </div>-->
+            </div>
+
+
+        </div>
+    </div>
+
+</form>

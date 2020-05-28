@@ -1,0 +1,13 @@
+.search-bar{
+    padding-left: 50px;
+    padding-top:40px;
+    float: left;
+
+}
+
+.search-btn{
+    float: left;
+    padding-left: 10px;
+    height: 40px;
+    align-content: center;
+}

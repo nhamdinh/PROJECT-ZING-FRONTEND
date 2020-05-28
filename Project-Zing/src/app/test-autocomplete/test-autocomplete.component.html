@@ -1,0 +1,32 @@
+<div class="ng-autocomplete">
+<!--    <ng-autocomplete [data]="data"-->
+<!--                     [searchKeyword]="keyword"-->
+<!--                     (selected)='selectEvent($event)'-->
+<!--                     (inputChanged)='getServerResponse($event)'-->
+<!--                     (inputFocused)='onFocused($event)'-->
+<!--                     [itemTemplate]="itemTemplate"-->
+<!--                     (inputCleared)="searchCleared()"-->
+<!--                     [notFoundTemplate]="notFoundTemplate"-->
+<!--                     [debounceTime]="600"-->
+<!--                     [isLoading]="isLoadingResult"-->
+<!--                     [minQueryLength]="2"-->
+<!--                     placeHolder="Search Movies. eg 'gun'">-->
+<!--    </ng-autocomplete>-->
+    <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                     (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                     [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+
+    <ng-template #itemTemplate let-item>
+        <a href="javascript:void(0)">
+            <span> <img style="width: 40px" src="../../assets/other_image/a1.jpg"></span>
+            <span [innerHTML]="item.name"></span>,
+            <span [innerHTML]="item.address"></span>
+        </a>
+    </ng-template>
+</div>

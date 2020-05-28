@@ -1,0 +1,91 @@
+<div class="header">
+    <!---start-top-header--->
+    <div class="top-header">
+        <div class="top-header-left">
+            <ul>
+                <li class="active"><a routerLink="/">Home</a></li>
+                <li><a href="#">Specials</a></li>
+                <li><a href="#">Delivery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="top-header-right">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="sub-header">
+        <div class="logo" style="float: left">
+            <a routerLink="/"><img src="../../assets/other_image/logo.png" title="logo" alt="image"></a>
+        </div>
+
+
+        <!--        <div class="sub-header-center" style="padding-left: 50px">-->
+        <!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+        <!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+        <!--        </div>-->
+
+
+        <div class="ng-autocomplete search-bar">
+            <form>
+
+                <div class="search-btn">
+                    <ng-autocomplete [data]="listSong" [searchKeyword]="keyWordSong"
+                                     (selected)='redirectViewSong($event)'
+                                     (inputChanged)='onFocused($event)'
+                                     (inputFocused)='onFocused($event)'
+                                     [itemTemplate]="itemTemplateSinger"
+                                     [notFoundTemplate]="notFoundTemplateSinger"
+                                     placeHolder="Search Song">
+                    </ng-autocomplete>
+                </div>
+                <div class="search-btn">
+                    <button class="btn btn-outline-success
+                 my-2 my-sm-0 search-btn"
+                            type="submit"
+                    >Search
+                    </button>
+                </div>
+
+            </form>
+            <ng-template #notFoundTemplateSinger let-notFound>
+                <!--                        <div [innerHTML]="notFound"+"dfdsgfd"></div>-->
+                <span><p style="height: 30px;color: #4907b4">No result! Try again</p></span>
+            </ng-template>
+            <ng-template #itemTemplateSinger let-item>
+                <a href="javascript:void(0)">
+                    <span> <img style="width: 50px; padding-left: 0" [src]="srcImageSong+item.imageSong"></span>
+                    <span style="padding-left: 10px" [innerHTML]="item.nameSong"></span>
+                </a>
+            </ng-template>
+        </div>
+        <br>
+        <div class="sub-header-right">
+            <ul *ngIf="!currentUser">
+                <li><a routerLink="signin">Đăng Nhập</a></li>
+                <li><a routerLink="register">Đăng Ký</a></li>
+            </ul>
+            <ul *ngIf="currentUser">
+                <li><a routerLink="/">Hello {{currentUser.username}}</a></li>
+                <li><a (click)="logout()" style="color:#efebeb;">Đăng Xuất</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="top-nav">
+        <ul>
+            <li class="active1"><a routerLink="/">Home</a></li>
+            <li><a href="favorites.html">Favourites</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li *ngIf="currentUser"><a href="specials.html">Recent-albums</a></li>
+            <li *ngIf="currentUser"><a routerLink="create-playlist">Create-playlist</a></li>
+            <li *ngIf="currentUser"><a routerLink="create-song">create-song</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <!---end-top-header--->
+    <!---End-header--->
+</div>

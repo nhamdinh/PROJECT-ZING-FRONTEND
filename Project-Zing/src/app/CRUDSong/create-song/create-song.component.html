@@ -1,0 +1,116 @@
+<br>
+<br>
+<br>
+<div class="ngContainer" class="form-create">
+    <div class="card">
+        <h4 class="card-header">Create New Song</h4>
+        <div class="card-body">
+            <form [formGroup]="songForm" (ngSubmit)="submit()">
+                <div class="form-group">
+                    <p for="nameSong" class="title-input">Name</p>
+                    <input type="text" id="nameSong" formControlName="nameSong" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="info" class="title-input">Information</p>
+                    <input id="info" type="text" formControlName="infoSong" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="imageSong" class="title-input">Image</p>
+                    <input id="imageSong" type="file" class="form-control" (input)="onChangeImage($event)" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="date" class="title-input">Date</p>
+                    <input id="date" type="date" formControlName="dateSong" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="likeSong" class="title-input">Likes</p>
+                    <input id="likeSong" type="number" formControlName="likeSong" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="listenSong" class="title-input">Amount of Listen</p>
+                    <input id="listenSong" type="number" formControlName="listenSong" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="downloadSong" class="title-input">Downloads</p>
+                    <input id="downloadSong" type="number" formControlName="downloadSong" class="form-control"
+                           required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="commendSong" class="title-input">Comment</p>
+                    <input id="commendSong" type="text" formControlName="commendSong" class="form-control"
+                           required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="category" class="title-input">Category</p>
+                    <input id="category" type="text" formControlName="category" class="form-control" required=""/>
+                </div>
+                <div class="form-group">
+                    <p for="linkSong" class="title-input">File Audio</p>
+                    <input id="linkSong" type="file" class="form-control" (input)="onChangeAudio($event)" required=""/>
+                </div>
+                <div class="ng-autocomplete">
+                    <p class="title-input">Singer</p>
+                    <ng-autocomplete [data]="listSinger" [searchKeyword]="keywordSinger"
+                                     (selected)='checkCanCreate()'
+                                     (inputChanged)='checkCanCreate()'
+                                     (inputFocused)='checkCanCreate()'
+                                     [itemTemplate]="itemTemplateSinger"
+                                     [notFoundTemplate]="notFoundTemplateSinger"
+                                     placeHolder="Select or create new singer"
+                                     formControlName="singer"
+                                     class="singer-input">
+                    </ng-autocomplete>
+                    <ng-template #notFoundTemplateSinger let-notFound>
+<!--                        <div [innerHTML]="notFound"+"dfdsgfd"></div>-->
+                        <span><p style="height: 30px;color: #4907b4">No result! Create new Singer   <a routerLink="/" style="color: red"><b>here</b></a></p></span>
+                    </ng-template>
+                    <ng-template #itemTemplateSinger let-item>
+                        <a href="javascript:void(0)">
+                            <span> <img style="width: 50px" [src]="srcImageSinger+item.imageSinger"></span>
+                            <span style="padding-left: 10px" [innerHTML]="item.nameSinger"></span>
+                        </a>
+                    </ng-template>
+                </div>
+                <br>
+                <div class="ng-autocomplete">
+                    <p class="title-input">Album</p>
+                    <ng-autocomplete [data]="listAlbum" [searchKeyword]="keywordAlbum" (selected)='checkCanCreate()'
+                                     (inputChanged)='checkCanCreate()' (inputFocused)='onFocused($event)'
+                                     [itemTemplate]="itemTemplateAlbum"
+                                     [notFoundTemplate]="notFoundTemplateAlbum"
+                                     placeHolder="Select or create new album"
+                                     formControlName="album" >
+                    </ng-autocomplete>
+                    <ng-template #notFoundTemplateAlbum let-notFound>
+<!--                        <div [innerHTML]="notFound"></div>-->
+                        <span><p style="height: 30px;color: #4907b4">No result! Create new album   <a routerLink="/" style="color: red"><b>here</b></a></p></span>
+                    </ng-template>
+
+                    <ng-template #itemTemplateAlbum let-item>
+                        <a href="javascript:void(0)">
+                            <span> <img style="width: 50px" [src]=" srcAlbum+item.imageAlbum"></span>
+                            <span style="padding-left: 10px" [innerHTML]="item.nameAlbum"></span>
+                        </a>
+                    </ng-template>
+                </div>
+                <br>
+                <div class="form-group">
+                    <p for="author" class="title-input">Author</p>
+                    <input (input)="checkCanCreate()" id="author" type="text" formControlName="author"
+                           class="form-control" required=""/>
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-primary" id="button-submit" [disabled]="isCannotCreate">
+                        <span class="spinner-border spinner-border-sm mr-1"></span>
+                        Create
+                    </button>
+                </div>
+                <!--                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>-->
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

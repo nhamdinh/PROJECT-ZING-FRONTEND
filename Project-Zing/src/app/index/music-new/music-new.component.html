@@ -1,0 +1,20 @@
+<div class="products products-secondbox">
+  <h5><span>Nhạc Mới Nhất</span> </h5>
+  <div class="section group">
+    <div class="grid_1_of_5 images_1_of_5" *ngFor="let song of songNew |paginate: { itemsPerPage: 5, currentPage: p }">
+      <img src="{{srcImageSong+song.imageSong}}">
+      <h3>{{song.nameSong}} </h3>
+      <p>{{song.nameSong + song.author}}</p>
+      <div>
+        <audio src="{{srcAudioSong+song.linkSong}}" controls style="width: 100%"></audio>
+      </div>
+      <button type="button"
+              class="btn btn-info"
+              (click)="onViewSong(song)"
+      >Chi tiết
+      </button>    </div>
+    <pagination-controls (pageChange)="p = $event"
+                         style="float: left"></pagination-controls>
+    <div class="clear"> </div>
+  </div>
+</div>

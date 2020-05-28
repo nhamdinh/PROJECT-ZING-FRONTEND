@@ -1,0 +1,24 @@
+<div class="products">
+    <h5><span>Kho nhạc của bạn</span></h5>
+    <div class="section group">
+        <div class="grid_1_of_5 images_1_of_5" *ngFor="let song of listSong">
+            <img src="{{srcImageSong+song.imageSong}}" alt="image">
+            <h3>{{song.nameSong}} </h3>
+            <p>{{song.nameSong + song.author}}</p>
+            <div>
+                <audio src="{{srcAudioSong+song.linkSong}}" controls style="width: 100%"></audio>
+            </div>
+            <!--            <div class="button"><span><a routerLink="view-song">Chi Tiết</a></span></div>-->
+            <!--            <div class="button"><span><a routerLink="edit-song">Sửa</a><a routerLink="remove-song">Xóa</a></span></div>-->
+            <span><button type="button" class="btn btn-secondary btn-sm"><a>Chi Tiết</a></button></span>
+            <span style="padding-left: 5px"><button type="button" class="btn btn-secondary btn-sm"><a
+                    (click)="viewSong(song)"
+                    routerLink="edit-song">Sửa</a></button></span>
+            <span style="padding-left: 5px"><button type="button" class="btn btn-secondary btn-sm"><a
+                    routerLink="delete-song" (click)="viewSong(song)">Xóa</a></button></span>
+
+
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

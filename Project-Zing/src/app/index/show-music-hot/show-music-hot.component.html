@@ -1,0 +1,32 @@
+<div class="products">
+    <h5><span>Top Nhạc Hot, Nghe Nghe Nhiều Nhất </span></h5>
+    <form>
+        <div class="section group">
+            <div class="grid_1_of_5 images_1_of_5"
+                 *ngFor="let song of songsHot|paginate: { itemsPerPage: 5, currentPage: paging }">
+                <img src="{{srcImageSong+song.imageSong}}" alt="image">
+                <h3>{{song.nameSong}} </h3>
+                <p>{{song.nameSong + '_' + song.author}}</p>
+                <div>
+                    <audio src="{{srcAudioSong+song.linkSong}}" controls style="width: 100%"></audio>
+                </div>
+                <div class="button">
+                    <button type="button"
+                            class="btn btn-success"
+                            (click)="onViewSong(song)"
+                    >Chi tiết
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+        <pagination-controls (pageChange)="paging = $event"
+                             style="float: contour"></pagination-controls>
+        <!--    <a class="button1" href="#">View all</a>-->
+        <div class="clear"></div>
+
+    </form>
+</div>
+
+
